@@ -104,7 +104,7 @@ class Card():
         time = current_time - self.frozen_timer
         if time < self.frozen_time: #cool down status
             image = pg.Surface([self.rect.w, self.rect.h])
-            frozen_image = self.orig_image.copy()
+            frozen_image = self.orig_image
             frozen_image.set_alpha(128)
             frozen_height = (self.frozen_time - time)/self.frozen_time * self.rect.h
             
@@ -112,7 +112,7 @@ class Card():
             image.blit(self.orig_image, (0,frozen_height),
                        (0, frozen_height, self.rect.w, self.rect.h - frozen_height))
         elif self.sun_cost > sun_value: #disable status
-            image = self.orig_image.copy()
+            image = self.orig_image
             image.set_alpha(192)
         else:
             image = self.orig_image
